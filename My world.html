@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lankan Handmade Product</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --terracotta: #c75b39;
+            --saffron: #f4a261;
+            --deep-green: #2d6a4f;
+            --gold: #d4a574;
+            --cream: #faf6f1;
+            --dark: #1a1a2e;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #1b4332 100%);
+            color: white;
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .top-bar {
+            background: var(--terracotta);
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--saffron);
+        }
+
+        .cart-btn {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(199, 91, 57, 0.4);
+        }
+
+        .cart-count {
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232d6a4f" width="1200" height="600"/><path fill="%23c75b39" opacity="0.3" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/><circle cx="200" cy="150" r="80" fill="%23f4a261" opacity="0.2"/><circle cx="1000" cy="100" r="120" fill="%23d4a574" opacity="0.15"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-btn {
+            background: var(--terracotta);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-btn:hover {
+            background: #a84a2f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(199, 91, 57, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Bar */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 40px 5%;
+            background: white;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Products Section */
+        .section {
+            padding: 60px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--deep-green);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--terracotta) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--terracotta);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--terracotta);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            margin: 8px 0;
+            color: var(--dark);
+        }
+
+        .product-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--deep-green);
+        }
+
+        .add-to-cart {
+            background: var(--deep-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #1b4332;
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #1b4332 100%);
+            color: white;
+            padding: 80px 5%;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--saffron);
+        }
+
+        /* Cart Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .modal-header h2 {
+            color: var(--deep-green);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--saffron), var(--terracotta));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .qty-btn {
+            background: #eee;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .qty-btn:hover {
+            background: var(--saffron);
+        }
+
+        .remove-item {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            text-align: right;
+        }
+
+        .cart-total h3 {
+            color: var(--deep-green);
+            font-size: 1.5rem;
+        }
+
+        #paypal-button-container {
+            margin-top: 20px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--saffron);
+            margin-bottom: 15px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: var(--saffron);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--terracotta);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--deep-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 3000;
+            animation: slideUp 0.3s ease;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            🚚 Free International Shipping on Orders Over $100 | Authentic Sri Lankan Crafts
+        </div>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">🐘</span>
+                <span>Sri Lankan Handmade Product</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cart-btn" onclick="toggleCart()">
+                🛒 Cart <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Authentic Sri Lankan Handicrafts</h1>
+            <p>Discover the soul of Sri Lanka through our curated collection of handmade treasures crafted by skilled artisans.</p>
+            <a href="#products" class="cta-btn">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <div class="features">
+        <div class="feature">
+            <span class="feature-icon">✈️</span>
+            <span>Worldwide Shipping</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">🤝</span>
+            <span>Direct from Artisans</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">🔒</span>
+            <span>Secure PayPal Checkout</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">⭐</span>
+            <span>Authentic Quality</span>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+        <h2 class="section-title">Our Collection</h2>
+        <p class="section-subtitle">Each piece tells a story of tradition, skill, and cultural heritage</p>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Preserving Sri Lankan Heritage</h2>
+                <p>We partner directly with skilled artisans across Sri Lanka to bring you authentic handmade products that carry centuries of tradition. From the hill country to the coastal villages, every item is crafted with love and expertise.</p>
+                <p>By choosing our products, you support local communities and help preserve traditional crafts for future generations.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div>Artisan Families</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div>Handmade</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div>Countries Shipped</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div>Happy Customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sri Lankan Handmade Product</h3>
+                <p>Bringing the finest Sri Lankan crafts to the world. Every purchase supports local artisans and their families.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📌</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#products">Shop All</a></p>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#">Shipping Info</a></p>
+                <p><a href="#">Returns Policy</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📧 j.m.a.k.jayasekara@gmail.com</p>
+                <p>📱 +94 77 123 4567</p>
+                <p>📍 Colombo, Sri Lanka</p>
+            </div>
+            <div class="footer-section">
+                <h3>Payment Methods</h3>
+                <p>💳 PayPal</p>
+                <p>💳 Credit/Debit Cards</p>
+                <p>🏦 Bank Transfer (Bulk Orders)</p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">🔒 All transactions are secure and encrypted</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Sri Lankan Handmade Product. All rights reserved. | Crafted with ❤️ in Sri Lanka</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>🛒 Your Shopping Cart</h2>
+                <button class="close-btn" onclick="toggleCart()">✕</button>
+            </div>
+            <div id="cartItems">
+                <!-- Cart items loaded by JS -->
+            </div>
+            <div id="cartTotalSection" style="display: none;">
+                <div class="cart-total">
+                    <h3>Total: $<span id="cartTotal">0.00</span></h3>
+                </div>
+                <div id="paypal-button-container"></div>
+                <p style="text-align: center; margin-top: 10px; color: #666; font-size: 0.85rem;">
+                    Secure checkout via PayPal<br>
+                    PayPal: j.m.a.k.jayasekara@gmail.com
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span>✓</span>
+        <span id="toastMessage">Added to cart!</span>
+    </div>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "Traditional Batik Wall Hanging",
+                category: "Batik Textiles",
+                price: 45.00,
+                description: "Hand-painted batik art depicting traditional Sri Lankan motifs",
+                emoji: "🎨",
+                badge: "Bestseller"
+            },
+            {
+                id: 2,
+                name: "Ceylon Cinnamon Quills",
+                category: "Spices",
+                price: 18.50,
+                description: "Premium Ceylon cinnamon, organically grown in Sri Lanka",
+                emoji: "🌿",
+                badge: "Organic"
+            },
+            {
+                id: 3,
+                name: "Handwoven Reed Basket",
+                category: "Home Decor",
+                price: 32.00,
+                description: "Eco-friendly basket woven by village artisans",
+                emoji: "🧺",
+                badge: "Eco-Friendly"
+            },
+            {
+                id: 4,
+                name: "Sri Lankan Mask - Raksha",
+                category: "Wood Carving",
+                price: 65.00,
+                description: "Traditional devil mask hand-carved from kaduru wood",
+                emoji: "🎭",
+                badge: "Hand-carved"
+            },
+            {
+                id: 5,
+                name: "Moonstone Pendant",
+                category: "Jewelry",
+                price: 85.00,
+                description: "Genuine Sri Lankan blue moonstone in sterling silver",
+                emoji: "💎",
+                badge: "Rare"
+            },
+            {
+                id: 6,
+                name: "Ceylon Black Tea Gift Set",
+                category: "Tea",
+                price: 28.00,
+                description: "Assorted premium Ceylon teas in hand-crafted wooden box",
+                emoji: "🍵",
+                badge: "Gift Ready"
+            },
+            {
+                id: 7,
+                name: "Brass Oil Lamp (Pahana)",
+                category: "Brassware",
+                price: 55.00,
+                description: "Traditional brass oil lamp for ceremonies and decor",
+                emoji: "🪔",
+                badge: "Traditional"
+            },
+            {
+                id: 8,
+                name: "Coconut Shell Bowl Set",
+                category: "Kitchen",
+                price: 22.00,
+                description: "Polished coconut shell bowls, sustainably sourced",
+                emoji: "🥥",
+                badge: "Sustainable"
+            }
+        ];
+
+        // Cart State
+        let cart = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+        });
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        ${product.emoji}
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-desc">${product.description}</p>
+                        <div class="product-footer">
+                            <span class="product-price">$${product.price.toFixed(2)}</span>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCartUI();
+            showToast(`${product.name} added to cart!`);
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Update Quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            
+            const cartItemsDiv = document.getElementById('cartItems');
+            const totalSection = document.getElementById('cartTotalSection');
+            
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <p>Your cart is empty</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px;">Browse our collection and add some beautiful Sri Lankan crafts!</p>
+                    </div>
+                `;
+                totalSection.style.display = 'none';
+            } else {
+                cartItemsDiv.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${item.emoji}</div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
+                                <span>${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${item.id})">Remove</button>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                document.getElementById('cartTotal').textContent = total.toFixed(2);
+                totalSection.style.display = 'block';
+                
+                // Render PayPal button
+                renderPayPalButton(total);
+            }
+        }
+
+        // Render PayPal Button
+        function renderPayPalButton(total) {
+            const container = document.getElementById('paypal-button-container');
+            container.innerHTML = '';
+            
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: total.toFixed(2),
+                                currency_code: 'USD'
+                            },
+                            description: 'Sri Lankan Handmade Products',
+                            payee: {
+                                email_address: 'j.m.a.k.jayasekara@gmail.com'
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Thank you for your purchase, ' + details.payer.name.given_name + '! Your Sri Lankan handmade products will be shipped soon.');
+                        cart = [];
+                        updateCartUI();
+                        toggleCart();
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal Error:', err);
+                    alert('There was an error processing your payment. Please try again.');
+                }
+            }).render('#paypal-button-container');
+        }
+
+        // Toggle Cart Modal
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+            document.body.style.overflow = modal.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Show Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Close modal on overlay click
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) toggleCart();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
